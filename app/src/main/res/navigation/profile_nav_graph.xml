@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/profile_nav_graph"
+    app:startDestination="@id/searchUserFragment">
+
+    <fragment
+        android:id="@+id/searchUserFragment"
+        android:name="com.shidqi.githubprofiles.ui.fragments.SearchFragment"
+        android:label="SearchUserFragment" >
+        <action
+            android:id="@+id/action_searchUserFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.shidqi.githubprofiles.ui.fragments.UserFragment"
+        android:label="UserFragment" >
+        <action
+            android:id="@+id/action_userFragment_to_searchUserFragment"
+            app:destination="@id/searchUserFragment" />
+        <argument
+            android:name="detail"
+            app:argType="com.shidqi.githubprofiles.models.Item" />
+    </fragment>
+</navigation>
