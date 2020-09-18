@@ -45,6 +45,7 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
         holder.itemView.apply {
             Glide.with(this).load(item.avatar_url).into(ivUserImage)
             tvTitle.text = item.login
+            tvDescription.text = item.name
             setOnClickListener {
                 onItemClickListener?.let {it(item)}
             }

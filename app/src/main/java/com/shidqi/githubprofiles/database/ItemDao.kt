@@ -7,11 +7,11 @@ import com.shidqi.githubprofiles.models.Item
 @Dao
 interface ItemDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun upsert(item: Item): Long
+    suspend fun upsert(item: ItemEntity): Long
 
     @Query("SELECT * FROM profiles")
-    fun getAllProfile(): LiveData<List<Item>>
+    fun getAllProfile(): LiveData<List<ItemEntity>>
 
     @Delete
-    suspend fun deleteProfile(item: Item)
+    suspend fun deleteProfile(item: ItemEntity)
 }

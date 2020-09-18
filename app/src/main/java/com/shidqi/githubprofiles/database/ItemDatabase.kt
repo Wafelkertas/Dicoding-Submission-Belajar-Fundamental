@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.shidqi.githubprofiles.models.Item
 
 @Database(
-    entities = [Item::class],
+    entities = [ItemEntity::class],
     version = 1,
     exportSchema = false
 )

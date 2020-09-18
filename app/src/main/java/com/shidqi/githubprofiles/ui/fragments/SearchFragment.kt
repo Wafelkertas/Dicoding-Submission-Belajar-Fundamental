@@ -34,7 +34,7 @@ class SearchFragment: Fragment(R.layout.fragment_search_user){
 
         itemAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
-                putSerializable("detail", it)
+                putParcelable("detail", it)
             }
             findNavController().navigate(
                 R.id.action_searchUserFragment_to_userFragment,

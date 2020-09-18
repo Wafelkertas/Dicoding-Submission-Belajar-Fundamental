@@ -21,5 +21,6 @@
         <argument
             android:name="detail"
             app:argType="com.shidqi.githubprofiles.models.Item" />
+
     </fragment>
 </navigation>

@@ -1,20 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--<layout >-->
-<!--    <data>-->
-<!--        <import type="android.view.View"/>-->
+<?xml version="1.0" encoding="utf-8"?><!--<layout >-->
 
-
-<!--        <variable-->
-<!--            name="detail"-->
-<!--            type="com.shidqi.githubprofiles.models.Item" />-->
-<!--    </data>-->
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/profile_toolbar"
@@ -63,7 +53,6 @@
             android:visibility="gone" />
 
 
-
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -99,30 +88,17 @@
                         style="@style/profile_tv_tittle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
-
                         tools:visibility="visible" />
 
                     <TextView
                         android:id="@+id/profile_tv_username"
-                        style="@style/profile_tv_subTittle"
+                        style="@style/profile_tv_tittle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
-
-
                         tools:visibility="visible" />
 
 
-                    <TextView
-                        android:id="@+id/profile_tv_location"
-                        style="@style/profile_tv_content"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_user_location"
-
-
-                        tools:visibility="visible" />
                 </LinearLayout>
 
                 <com.google.android.material.tabs.TabLayout
@@ -140,13 +116,15 @@
                 android:id="@+id/profile_nestedScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:clipToPadding="false"
                 android:fillViewport="true"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                <androidx.viewpager.widget.ViewPager
+                <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/profile_viewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    />
 
             </androidx.core.widget.NestedScrollView>
 
@@ -154,6 +132,7 @@
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 
