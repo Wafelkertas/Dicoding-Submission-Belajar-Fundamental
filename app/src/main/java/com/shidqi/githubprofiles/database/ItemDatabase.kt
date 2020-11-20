@@ -6,13 +6,15 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.shidqi.githubprofiles.models.Item
 
+
 @Database(
-    entities = [ItemEntity::class],
+    entities = [Item::class],
     version = 1,
     exportSchema = false
 )
 abstract class ItemDatabase : RoomDatabase() {
 
+    // Fungsi Abstract untuk memanggil DAO
     abstract fun getItemDao(): ItemDao
 
     companion object{

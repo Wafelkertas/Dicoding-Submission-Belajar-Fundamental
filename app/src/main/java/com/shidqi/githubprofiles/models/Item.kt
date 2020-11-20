@@ -1,11 +1,19 @@
 package com.shidqi.githubprofiles.models
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.shidqi.githubprofiles.utils.USER_TABLE_NAME
 import kotlinx.android.parcel.Parcelize
 
 
+@Entity(
+    tableName = USER_TABLE_NAME
+)
 @Parcelize
 data class Item(
+    @PrimaryKey(autoGenerate = true)
+    var id: Int? = null,
     val avatar_url: String?,
     val bio: String?,
     val blog: String?,
@@ -21,7 +29,6 @@ data class Item(
     val gravatar_id: String?,
     val hireable: String?,
     val html_url: String?,
-    val id: Int,
     val location: String?,
     val login: String,
     val name: String?,

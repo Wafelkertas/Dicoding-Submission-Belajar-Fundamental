@@ -4,20 +4,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.shidqi.githubprofiles.R
+import com.shidqi.githubprofiles.models.Item
+import com.shidqi.githubprofiles.models.UserSearch
+import kotlinx.android.synthetic.main.fragment_user.*
 import kotlinx.android.synthetic.main.item_user_preview.view.*
 
 class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>() {
 
     inner class FollowerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
-    val test = listOf(
-        "test",
-        "test",
-        "test",
-        "test",
-        "test"
-    )
+    private var list: List<UserSearch> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowerAdapter.FollowerViewHolder {
         return FollowerViewHolder(
@@ -29,15 +27,28 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>
         )
     }
 
+
     override fun getItemCount(): Int {
-        return test.size
+        return list.size
     }
 
     override fun onBindViewHolder(holder: FollowerViewHolder, position: Int) {
+        val data = list[position]
+        val dpImage = data.avatar_url
         holder.itemView.apply {
-            tvTitle.text = test.toString()
+            tvTitle.text = data.login
+            Glide.with(this)
+                .load(dpImage)
+                .into(ivUserImage)
+
 
         }
+    }
+
+    //fungsi untuk mengubah list ke dalam adapter
+    fun setList(list: List<UserSearch>) {
+        this.list = list
+        notifyDataSetChanged()
     }
 
 

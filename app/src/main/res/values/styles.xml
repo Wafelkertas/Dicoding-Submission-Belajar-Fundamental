@@ -35,7 +35,7 @@
     <style name="profile_tv_tittle">
         <item name="android:fontFamily">@font/segoeui_semibold</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/colorGreyPrimary</item>
+        <item name="android:textColor">@color/colorWhiteSoft</item>
     </style>
 
     <style name="profile_tv_subTittle">

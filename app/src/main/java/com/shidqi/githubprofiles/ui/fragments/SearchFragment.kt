@@ -15,6 +15,7 @@ import com.shidqi.githubprofiles.ui.SearchActivity
 import com.shidqi.githubprofiles.utils.Constants.Companion.SEARCH_USER_TIME_DELAY
 import com.shidqi.githubprofiles.utils.Resource
 import kotlinx.android.synthetic.main.fragment_search_user.*
+import kotlinx.android.synthetic.main.fragment_user.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
@@ -23,24 +24,41 @@ import kotlinx.coroutines.launch
 
 class SearchFragment: Fragment(R.layout.fragment_search_user){
 
-    val TAG = "SearchFragments"
+    private val TAG = "SearchFragments"
     lateinit var viewModel : ItemViewModel
     lateinit var itemAdapter : ItemAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = (activity as SearchActivity).viewModel1
+        viewModel = (activity as SearchActivity).itemViewModel
         setupRecyclerView()
 
-        itemAdapter.setOnItemClickListener {
+
+
+        itemAdapter.setOnItemClickListener {Item ->
             val bundle = Bundle().apply {
-                putParcelable("detail", it)
+                putParcelable("detail", Item)
             }
             findNavController().navigate(
                 R.id.action_searchUserFragment_to_userFragment,
                 bundle
             )
         }
+
+        main_toolbar.apply {
+            inflateMenu(R.menu.main_menu)
+            setOnMenuItemClickListener{
+                when(it.itemId){
+                    R.id.action_home_setting -> {
+                        val action = SearchFragmentDirections.actionSearchUserFragmentToSettingsFragment()
+                        findNavController().navigate(action)
+                    }
+                }
+                false
+            }
+        }
+
+
 
         var job: Job? = null
         etSearch.addTextChangedListener { editable ->

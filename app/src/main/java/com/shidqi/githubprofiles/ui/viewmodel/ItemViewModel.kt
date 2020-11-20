@@ -4,6 +4,7 @@ package com.shidqi.githubprofiles.ui.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.shidqi.githubprofiles.models.Item
 import com.shidqi.githubprofiles.models.SearchResponse
 import com.shidqi.githubprofiles.repository.SearchRepository
 import com.shidqi.githubprofiles.utils.Resource
@@ -11,7 +12,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class ItemViewModel (
-    val SearchRepository: SearchRepository
+    val searchRepository: SearchRepository
 ) : ViewModel() {
 
     val searchUsers: MutableLiveData<Resource<SearchResponse>> = MutableLiveData()
@@ -19,7 +20,7 @@ class ItemViewModel (
 
     fun searchUsers(searchQuery: String) = viewModelScope.launch {
         searchUsers.postValue(Resource.Loading())
-        val response = SearchRepository.getSearchUser(searchQuery, searchUserPage)
+        val response = searchRepository.getSearchUser(searchQuery, searchUserPage)
         searchUsers.postValue(handleSearchUsersResponse(response))
     }
 
@@ -31,4 +32,6 @@ class ItemViewModel (
         }
         return Resource.Error(response.message())
     }
+
+
 }

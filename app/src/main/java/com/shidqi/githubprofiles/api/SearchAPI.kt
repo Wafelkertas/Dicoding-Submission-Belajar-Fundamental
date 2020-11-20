@@ -2,7 +2,8 @@ package com.shidqi.githubprofiles.api
 
 import com.shidqi.githubprofiles.models.Item
 import com.shidqi.githubprofiles.models.SearchResponse
-import com.shidqi.githubprofiles.models.UserDetail
+
+import com.shidqi.githubprofiles.models.UserSearch
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -11,6 +12,7 @@ import java.util.*
 
 interface SearchAPI {
 
+    //Fungsi suspend mencari user
     @GET("search/users")
     suspend fun searchUsers(
         @Query("q")
@@ -19,20 +21,21 @@ interface SearchAPI {
         pageNumber: Int = 1
     ) : Response<SearchResponse>
 
+
     @GET("users/{username}")
     suspend fun searchName(
-        @Query("users/{username}")
+        @Path("username")
         username: String
-    ) : Response<UserDetail>
+    ) : Response<UserSearch>
 
 
     @GET("users/{username}/followers")
     suspend fun getUserFollowers(
         @Path("username") username: String
-    ): Response<List<UserDetail>>
+    ) : Response<List<UserSearch>>
 
     @GET("users/{username}/following")
     suspend fun getUserFollowing(
         @Path("username") username: String
-    ): Response<List<UserDetail>>
+    ) : Response<List<UserSearch>>
 }

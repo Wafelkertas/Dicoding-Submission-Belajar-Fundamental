@@ -15,6 +15,7 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
     inner class ItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
+    //Fungsi untuk membandingkan data dan dipilih yang mana akan di search
     private val differCallback = object : DiffUtil.ItemCallback<Item>(){
         override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
             return oldItem.html_url == newItem.html_url

@@ -9,22 +9,25 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.shidqi.githubprofiles.R
 import com.shidqi.githubprofiles.ui.fragments.ProfileFollowFragment
 
-class ViewPagerAdapter (fragment: Fragment
+class ViewPagerAdapter(
+    fragment: Fragment,
+    val username: String
 ) : FragmentStateAdapter(fragment) {
     inner class ViewPagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
+    private val tab = listOf(
+        "Follower",
+        "Following"
+    )
 
 
-    //    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerViewHolder {
-//        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user_preview, parent, false)
-//        return ViewPagerViewHolder(view)
-//    }
-    override fun createFragment(position: Int): Fragment = ProfileFollowFragment()
+    override fun createFragment(position: Int): Fragment =
+        ProfileFollowFragment.newInstance(position, username)
 
-    override fun getItemCount(): Int = 2
 
-//    override fun onBindViewHolder(holder: ViewPagerViewHolder, position: Int) {
-//        return
-//
-//    }
+    override fun getItemCount(): Int {
+        return tab.size
+    }
+
+
 }

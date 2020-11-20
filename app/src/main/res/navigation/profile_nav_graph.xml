@@ -10,17 +10,40 @@
         <action
             android:id="@+id/action_searchUserFragment_to_userFragment"
             app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_searchUserFragment_to_userFragment2"
+            app:destination="@id/userFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_searchUserFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/userFragment"
         android:name="com.shidqi.githubprofiles.ui.fragments.UserFragment"
         android:label="UserFragment" >
-        <action
-            android:id="@+id/action_userFragment_to_searchUserFragment"
-            app:destination="@id/searchUserFragment" />
         <argument
             android:name="detail"
             app:argType="com.shidqi.githubprofiles.models.Item" />
+        <action
+            android:id="@+id/action_userFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.shidqi.githubprofiles.ui.fragments.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/favouriteFragment"
+        android:name="com.shidqi.githubprofiles.ui.fragments.FavouriteFragment"
+        android:label="FavouriteFragment" >
+        <action
+            android:id="@+id/action_favouriteFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_favouriteFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package com.shidqi.githubprofiles.utils
+package com.example.consumerapp.utils
 
 class Constants {
     companion object{

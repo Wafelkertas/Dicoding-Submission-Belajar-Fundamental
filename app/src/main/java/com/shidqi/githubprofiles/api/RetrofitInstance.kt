@@ -6,6 +6,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+//Kelas untuk membuat objek Retrofit
 class RetrofitInstance {
     companion object{
         private val retrofit by lazy {
